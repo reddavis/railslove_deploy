@@ -4,12 +4,12 @@ require "railslove/sprinkle"
 policy :passenger_stack, :roles => :app do
   requires :webserver         # Apache
   requires :database          # MySQL, SQLite
-  
+
   # memcached
   requires :memcached_daemon  # Memcached
   requires :libmemcached      # libmemcached
-  requires :memcached_conf    # memcached-user, init.d config 
-  
+  requires :memcached_conf    # memcached-user, init.d config
+
   requires :scm               # Git, SVN
   requires :ruby              # Ruby Enterprise
   requires :searchengine      # Sphinx
@@ -23,6 +23,7 @@ policy :passenger_stack, :roles => :app do
   requires :monit             # monit - system process monitoring
   requires :munin_node        # install munin-node for system monitoring
   requires :munin_apache_status # configure extended apache status information
+  requires :redis
 end
 
 deployment do
@@ -35,7 +36,7 @@ deployment do
     end
     recipes 'config/server/config.rb'
   end
- 
+
   # source based package installer defaults
   source do
     prefix   '/usr/local'
