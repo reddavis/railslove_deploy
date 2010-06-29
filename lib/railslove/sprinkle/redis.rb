@@ -5,9 +5,9 @@ package :redis do
     custom_install 'make'
 
     post :install, 'cp redis-server ~/usr/bin/'
-    post :install 'cp redis-cli ~/usr/bin/'
-    post :install 'cp redis-stat ~/usr/bin/'
-    post :install 'cp redis-benchmark ~/usr/bin/'
+    post :install, 'cp redis-cli ~/usr/bin/'
+    post :install, 'cp redis-stat ~/usr/bin/'
+    post :install, 'cp redis-benchmark ~/usr/bin/'
   end
 
   verify do
