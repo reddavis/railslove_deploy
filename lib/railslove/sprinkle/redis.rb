@@ -3,10 +3,11 @@ package :redis do
   version '1.2.6'
   source "http://redis.googlecode.com/files/redis-#{version}.tar.gz" do
     custom_install 'make'
-    custom_install 'cp redis-server ~/usr/bin/'
-    custom_install 'cp redis-cli ~/usr/bin/'
-    custom_install 'cp redis-stat ~/usr/bin/'
-    custom_install 'cp redis-benchmark ~/usr/bin/'
+
+    post :install, 'cp redis-server ~/usr/bin/'
+    post :install 'cp redis-cli ~/usr/bin/'
+    post :install 'cp redis-stat ~/usr/bin/'
+    post :install 'cp redis-benchmark ~/usr/bin/'
   end
 
   verify do
@@ -14,10 +15,5 @@ package :redis do
     has_file '/usr/bin/redis-cli'
     has_file '/usr/bin/redis-stat'
     has_file '/usr/bin/redis-benchmark'
-
-    has_process 'redis-server'
-    has_process 'redis-cli'
-    has_process 'redis-benchmark'
-    has_process 'redis-stat'
   end
 end
